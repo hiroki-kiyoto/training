@@ -13,3 +13,35 @@
  *= require_tree .
  *= require_self
  */
+ @import "uikit.min";
+ body {
+    background-color: #fff;
+    color: #333;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+a {
+    color: #000;
+
+    &:visited {
+        color: #666;
+    }
+}
+
+ .content{
+    display: grid;
+	grid-template-columns: 100vw;
+	grid-template-rows: 100vh;
+	line-height: 1.5em;
+}
+
+.main{
+    justify-self: center;
+	align-self: center;
+	padding: 15px 30px;
+	width: 700px;
+    text-align: center;
+    margin-bottom: 50px;
+}

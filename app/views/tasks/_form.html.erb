@@ -1,0 +1,17 @@
+<%= form_with(model: [@project,@task], local: true) do |form| %>
+　<fieldset class="uk-fieldset">
+    <div class="uk-margin-medium">
+      <label class="uk-form-label" for="form-stacked-text">タスク名：</label>
+  　　 <%= form.text_field :title ,class: :"uk-input uk-form-width-large" %>
+    </div>
+    <div class="uk-margin-medium">
+      <label class="uk-form-label" for="form-stacked-text">コメント：</label>
+  　　 <%= form.text_area :comment ,class: :"uk-input uk-form-width-large" %>
+    </div>
+    <div class="uk-margin-medium">
+      <label class="uk-form-label" for="form-stacked-text">期限：</label>
+  　　 <%= form.date_select :deadline ,default: { year: 2000, month: 1, day: 1 }%>
+    </div>
+　　 <%= form.submit "作成",class: :"uk-button uk-button-default" %>
+  </fieldset>
+<% end %>

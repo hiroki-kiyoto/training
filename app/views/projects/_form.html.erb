@@ -1,0 +1,4 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <%= form.text_field :name ,class: :"uk-input uk-form-width-large" %>
+  <%= form.submit "作成",class: :"uk-button uk-button-default" %>
+<% end %>

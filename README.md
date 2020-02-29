@@ -54,7 +54,7 @@ belongs_to :tag
 | column | type |option |
 |----|---- |----|
 | id |  |  |
-| title | string | null:false |
+| tags_name | string | null:false |
 
 ### Asociation
 has_many :task_tags, dependent: :destroy

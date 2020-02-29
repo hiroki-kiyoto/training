@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
- @import "uikit.min";
+@import "uikit.min";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
  body {
     background-color: #fff;
     color: #333;

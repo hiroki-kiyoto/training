@@ -6,7 +6,18 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @tasks = @project.tasks.all
+    if params[:tags_name_key]
+      tag = Tag.where('tags_name LIKE ?', "#{params[:tags_name_key]}")
+      tag1 = tag[0]
+      if tag1.nil?
+        @tasks = []
+      else
+        task_tags = TaskTag.where(tag_id: tag1.id)
+        @tasks = task_tags.map { |task_tag| Task.find(task_tag.task_id) }
+      end
+    else
+      @tasks = @project.tasks.all
+    end
   end
 
   def new

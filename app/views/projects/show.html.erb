@@ -1,0 +1,36 @@
+<nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="/"><%= @project.name %></a>
+        <ul class="uk-navbar-nav">
+            <%= link_to '新規タスク作成',new_project_task_path(@project) , class: "uk-button uk-button-default" %>
+        </ul>
+    </div>
+    <div class="uk-navbar-right">
+        <div class="uk-navbar-item">
+            <form action="javascript:void(0)">
+                <input class="uk-input uk-form-width-small" type="text" placeholder="Input">
+                <button class="uk-button uk-button-default">検索</button>
+            </form>
+        </div>
+    </div>
+  </nav>
+  <div class="uk-container uk-container-small">
+    <% @tasks.each do |task| %>
+      <div class="uk-margin-medium uk-card uk-card-default uk-width-1@m">
+        <div class="uk-card-header">
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-3-4">
+                <h3 class="uk-card-title uk-margin-remove-bottom"><%= task.title %></h3>
+              </div>
+              <div class="uk-width-1-4">
+                <ul class="uk-list">
+                  <li><%= link_to 'Show', project, class: "uk-button uk-button-text uk-card-footer-button" %></li>
+                  <li><%= link_to 'Edit', edit_project_path(project), class: "uk-button uk-button-text uk-card-footer-button" %></li>
+                  <li><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-text uk-card-footer-button" %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

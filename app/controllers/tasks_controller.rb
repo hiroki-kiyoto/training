@@ -1,74 +1,54 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:create, :new, :edit, :destroy, :update]
 
-  # GET /tasks
-  # GET /tasks.json
-  def index
-    @tasks = Task.all
-  end
-
-  # GET /tasks/1
-  # GET /tasks/1.json
   def show
   end
 
-  # GET /tasks/new
   def new
-    @project = Project.find(params[:project_id])
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
   def edit
+    @tag_list = @task.tags.pluck(:tags_name).join(",")
   end
-  # POST /tasks
-  # POST /tasks.json
+
   def create
     @task = Task.new(task_params)
-
-    respond_to do |format|
+    tag_list = params[:task][:tags_name].split(",")
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
+        @task.save_tasks(tag_list)
+        redirect_to "/projects/#{@project.id}"
       else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        redirect_to "/projects/#{@project.id}/tasks/new"
       end
-    end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    tag_list = params[:task][:tags_name].split(",")
+    if @task.update(task_params)
+      @task.save_tasks(tag_list)
+      redirect_to "/projects/#{@project.id}"
+    else
+      redirect_to "/projects/#{@project.id}/tasks/new"
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
   def destroy
     @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to "/projects/#{@project.id}"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def task_params
-      params.fetch(:task, {})
-    end
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def task_params
+    params.fetch(:task, {}).permit(:title, :deadline, :comment, :project_id)
+  end
 end

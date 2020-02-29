@@ -21,9 +21,9 @@
             </div>
             <div class="uk-width-1-4">
               <ul class="uk-list">
-                <li><%= link_to 'Show', project, class: "uk-button uk-button-text uk-card-footer-button" %></li>
-                <li><%= link_to 'Edit', edit_project_path(project), class: "uk-button uk-button-text uk-card-footer-button" %></li>
-                <li><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-text uk-card-footer-button" %></li>
+                <li><%= link_to 'Show', "/projects/#{project.id}", class: "uk-button uk-button-text uk-card-footer-button" %></li>
+                <li><%= link_to 'Edit', "/projects/#{project.id}/edit", class: "uk-button uk-button-text uk-card-footer-button" %></li>
+                <li><%= link_to 'Destroy', "/projects/#{project.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: "uk-button uk-button-text uk-card-footer-button" %></li>
             </ul>
           </div>
         </div>

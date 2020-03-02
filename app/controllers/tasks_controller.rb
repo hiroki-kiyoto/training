@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :notifier]
-  before_action :set_project, only: [:create, :new, :edit, :destroy, :update]
+  before_action :set_project, only: [:create, :new, :edit, :destroy, :update, :show]
 
   def show
   end
@@ -61,7 +61,7 @@ class TasksController < ApplicationController
   def notifier(message)
     notifier = Slack::Notifier.new(
       'https://hooks.slack.com/services/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',
-      channel: '#test_kiyo',
+      channel: 'ああああ',
       username: 'article notifier',
     )
     notifier.ping "#{@task.title}タスクが#{message}されました！！"

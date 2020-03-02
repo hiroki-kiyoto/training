@@ -1,0 +1,21 @@
+<div class="uk-container uk-container-xsmall">
+    <div class="uk-margin-large-top uk-card uk-card-body uk-card-default">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">プロジェクトタイトル：<%= @task.project.name %></h3>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p class="uk-text-lead uk-margin-remove-top">タスク名：<%= @task.title %></p>
+            <p class="uk-text-lead uk-margin-remove-top">コメント：<%= @task.comment %></p>
+            <p class="uk-text-meta uk-margin-medium-top"><time datetime="2016-04-01T19:00">期限：<%= @task.deadline %></time></p>
+        </div>
+        <div class="uk-card-footer">
+            <%= link_to "/projects/#{@project.id}", method: :get do %>
+                <span class="uk-margin-small-right" uk-icon="reply">プロジェクトに戻る</span>
+            <% end %>
+        </div>
+    </div>
+</div>

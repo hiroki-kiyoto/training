@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: trainig_production
-  username: trainig
-  password: <%= ENV['TRAINIG_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

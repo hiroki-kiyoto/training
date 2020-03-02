@@ -1,6 +1,9 @@
 <nav class="uk-navbar-container uk-margin" uk-navbar>
   <div class="uk-navbar-left">
-    <a class="uk-navbar-item uk-logo" href="/">プロジェクト一覧</a>
+    <a class="uk-navbar-item uk-logo" >プロジェクト一覧</a>
+    <%= link_to "/", method: :get do %>
+        <span class="uk-margin-small-left" uk-icon="home">ホームに戻る</span>
+    <% end %>
   </div>
 </nav>
 <div class="uk-container uk-container-small">

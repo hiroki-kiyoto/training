@@ -60,8 +60,8 @@ class TasksController < ApplicationController
 
   def notifier(message)
     notifier = Slack::Notifier.new(
-      'https://hooks.slack.com/services/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',
-      channel: 'ああああ',
+      'https://hooks.slack.com/services/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',
+      channel: '#ああああ',
       username: 'article notifier',
     )
     notifier.ping "#{@task.title}タスクが#{message}されました！！"

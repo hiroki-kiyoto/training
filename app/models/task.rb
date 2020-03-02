@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
     belongs_to :project
     has_many :task_tags, dependent: :destroy
-    has_many :tags, through: :task_tags
+    has_many :tags, through: :task_tags, dependent: :destroy
 
     def save_tasks(tags)
         current_tags = self.tags.pluck(:tags_name) unless self.tags.nil?

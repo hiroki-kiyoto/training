@@ -59,8 +59,9 @@ class TasksController < ApplicationController
   end
 
   def notifier(message)
+    slakc_url = ENV['SLACK_WEBHOOK_KEY']
     notifier = Slack::Notifier.new(
-      'https://hooks.slack.com/services/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',
+      slakc_url,
       channel: '#ああああ',
       username: 'article notifier',
     )

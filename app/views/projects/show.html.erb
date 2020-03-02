@@ -1,9 +1,12 @@
 <nav class="uk-navbar-container uk-margin" uk-navbar>
     <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="/"><%= @project.name %></a>
+        <a class="uk-navbar-item uk-logo"><%= @project.name %></a>
         <ul class="uk-navbar-nav">
             <%= link_to '新規タスク作成',new_project_task_path(@project) , class: "uk-button uk-button-default" %>
         </ul>
+        <%= link_to "/projects", method: :get do %>
+            <span class="uk-margin-small-left" uk-icon="home">プロジェクト一覧に戻る</span>
+        <% end %>
     </div>
     <div class="uk-navbar-right">
         <div class="uk-navbar-item">

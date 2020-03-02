@@ -1,4 +1,9 @@
 <%= form_with(model: project, local: true) do |form| %>
   <%= form.text_field :name ,class: :"uk-input uk-form-width-large" %>
   <%= form.submit "作成",class: :"uk-button uk-button-default" %>
+  <div class="uk-margin-medium">
+    <%= link_to "/", method: :get do %>
+        <span class="uk-margin-small-right" uk-icon="home">ホームに戻る</span>
+    <% end %>
+  </div>
 <% end %>

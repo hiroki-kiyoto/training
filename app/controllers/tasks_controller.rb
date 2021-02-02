@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     tag_list = params[:task][:tags_name].split(",")
       if @task.save
-        notifier(message)
+        # notifier(message)
         @task.save_tasks(tag_list)
         redirect_to "/projects/#{@project.id}"
       else
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     message = "更新"
     tag_list = params[:task][:tags_name].split(",")
     if @task.update(task_params)
-      notifier(message)
+      # notifier(message)
       @task.save_tasks(tag_list)
       redirect_to "/projects/#{@project.id}"
     else
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_to "/projects/#{@project.id}"
     message = "削除"
-    notifier(message)
+    # notifier(message)
   end
 
   private
@@ -58,14 +58,14 @@ class TasksController < ApplicationController
     params.fetch(:task, {}).permit(:title, :deadline, :comment, :project_id)
   end
 
-  def notifier(message)
-    slakc_url = ENV['SLACK_WEBHOOK_KEY']
-    notifier = Slack::Notifier.new(
-      slakc_url,
-      channel: '#ああああ',
-      username: 'article notifier',
-    )
-    notifier.ping "#{@task.title}タスクが#{message}されました！！"
-  end
+  # def notifier(message)
+  #   slakc_url = ENV['SLACK_WEBHOOK_KEY']
+  #   notifier = Slack::Notifier.new(
+  #     slakc_url,
+  #     channel: '#ああああ',
+  #     username: 'article notifier',
+  #   )
+  #   notifier.ping "#{@task.title}タスクが#{message}されました！！"
+  # end
   
 end
